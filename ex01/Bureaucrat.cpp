@@ -28,34 +28,46 @@ Bureaucrat::Bureaucrat(Bureaucrat &object) {
 }
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& object) {
+	if (this != &object) {
+		this->grade = object.getGrade();
+	}
 	return *this;
 }
 
 Bureaucrat::~Bureaucrat() {
 }
 
-const std::string	Bureaucrat::getName(void) const {
+const std::string	Bureaucrat::getName() const {
 	return this->name;
 }
 
-const int	Bureaucrat::getGrade(void) const {
+int	Bureaucrat::getGrade() const {
 	return this->grade;
 }
 
 void	Bureaucrat::increaseGrade(void) {
 	if (this->grade == 1)
-		std::cout << "Grade is already highest" << std::endl;
-	else
-		this->grade--;
+		std::cout << "Grade is already highest. Grade: " << std::endl;
+	else {
+		--this->grade;
+		std::cout << "Grade is increased. Grade: " << this->grade << std::endl;
+	}
 }
 
-void	Bureaucrat::decreaseGrade(void) {
+void	Bureaucrat::decreaseGrade() {
 	if (this->grade == 150)
-		std::cout << "Grade is already lowest" << std::endl;
-	else
-		this->grade++;
+		std::cout << "Grade is already lowest. Grade: " << this->grade << std::endl;
+	else {
+		++this->grade;
+		std::cout << "Grade is decreased. Grade: " << this->grade << std::endl;
+	}
+}
+
+void	Bureaucrat::signForm() {
+	;
 }
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& object) {
 	os << object.getName() << ", bureaucrat grade " << object.getGrade() << std::endl;
+	return os;
 }

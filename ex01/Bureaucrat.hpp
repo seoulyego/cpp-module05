@@ -25,10 +25,11 @@ class Bureaucrat {
 		Bureaucrat&	operator=(const Bureaucrat& object);
 		~Bureaucrat();
 
-		const std::string	getName(void) const;
-		const int			getGrade(void) const;
-		void				increaseGrade(void);
-		void				decreaseGrade(void);
+		const std::string	getName() const;
+		int					getGrade() const;
+		void				increaseGrade();
+		void				decreaseGrade();
+		void				signForm();
 };
 
 	std::ostream&	operator<<(std::ostream& os, const Bureaucrat& object);
