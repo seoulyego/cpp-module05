@@ -2,11 +2,11 @@
 #include <iostream>
 
 const char *Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade is too high";
+	return "Grade is too high.";
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade is too low";
+	return "Grade is too low.";
 }
 
 Bureaucrat::Bureaucrat() : name("defualt") {
@@ -14,13 +14,13 @@ Bureaucrat::Bureaucrat() : name("defualt") {
 }
 
 Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name) {
-	this->grade = grade;
 	if (grade < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
 	else if (grade > 150) {
 		throw Bureaucrat::GradeTooLowException();
 	}
+	this->grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat &object) {
@@ -34,8 +34,7 @@ Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& object) {
 	return *this;
 }
 
-Bureaucrat::~Bureaucrat() {
-}
+Bureaucrat::~Bureaucrat() {}
 
 const std::string	Bureaucrat::getName() const {
 	return this->name;
@@ -63,7 +62,7 @@ void	Bureaucrat::decreaseGrade() {
 	}
 }
 
-std::ostream&	operator<<(std::ostream& os, const Bureaucrat& object) {
-	os << object.getName() << ", bureaucrat grade " << object.getGrade() << std::endl;
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b) {
+	os << b.getName() << ", bureaucrat grade " << b.getGrade() << ".";
 	return os;
 }

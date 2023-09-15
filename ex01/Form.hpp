@@ -1,9 +1,10 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
-# include "Bureaucrat.hpp"
 # include <string>
 # include <stdbool.h>
+
+class Bureaucrat;
 
 class Form {
 	private:
@@ -23,15 +24,19 @@ class Form {
 		};
 
 		Form();
-		Form(const std::string name, bool is_signed, const int sign_grade, const int exec_grade);
+		Form(const std::string name, const int sign_grade, const int exec_grade);
 		Form(Form& object);
 		Form& operator=(const Form& object);
 		~Form();
 
 		const std::string	getName() const;
-		const int			getSignGrade() const;
-		const int			getExecGrade() const;
+		bool 				getSigned() const;
+		int					getSignGrade() const;
+		int					getExecGrade() const;
+		void				setSigned(bool is_signed);
 		void				beSigned(Bureaucrat& b);
 };
 
-#endif
+std::ostream&	operator<<(std::ostream& os, const Form& f);
+
+#endif  // FORM_HPP

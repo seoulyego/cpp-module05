@@ -11,7 +11,8 @@ int	main(void) {
 			Bureaucrat test("test", 200);	
 		}
 		catch(const std::exception& e) {
-			std::cerr << e.what() << '\n';
+			std::cerr << e.what() << std::endl;
+			std::cout << std::endl;
 		}
 
 		Bureaucrat a("a", 150);
@@ -35,7 +36,7 @@ int	main(void) {
 		std::cout << std::endl;
 	}
 	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cerr << e.what() << std::endl;
 	}
 	return 0;
 }
