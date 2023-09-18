@@ -10,6 +10,10 @@ const char	*Form::GradeTooLowException::what() const throw() {
 	return "Grade is too low.";
 }
 
+const char	*Form::NotSignedException::what() const throw() {
+	return "Must be signed before excute.";
+}
+
 Form::Form()
 : name("defualt"), is_signed(false), sign_grade(150), exec_grade(150) {}
 

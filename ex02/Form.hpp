@@ -23,10 +23,15 @@ class Form {
 				const char *what() const throw();
 		};
 
+		class NotSignedException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+
 		Form();
 		Form(Form& object);
 		Form& operator=(const Form& object);
-		~Form();
+		virtual ~Form();
 
 		Form(const std::string name, const int sign_grade, const int exec_grade);
 		const std::string	getName() const;
@@ -35,6 +40,7 @@ class Form {
 		int					getExecGrade() const;
 		void				setSigned(bool is_signed);
 		bool				beSigned(Bureaucrat& b);
+		virtual void		execute(Bureaucrat const& executor) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& os, const Form& f);
