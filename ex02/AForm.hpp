@@ -1,12 +1,12 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <string>
 # include <stdbool.h>
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 	private:
 		const std::string	name;
 		bool				is_signed;
@@ -22,18 +22,17 @@ class Form {
 			public:
 				const char *what() const throw();
 		};
-
 		class NotSignedException : public std::exception {
 			public:
 				const char *what() const throw();
 		};
 
-		Form();
-		Form(Form& object);
-		Form& operator=(const Form& object);
-		virtual ~Form();
+		AForm();
+		AForm(AForm& object);
+		AForm& operator=(const AForm& object);
+		virtual ~AForm();
 
-		Form(const std::string name, const int sign_grade, const int exec_grade);
+		AForm(const std::string name, const int sign_grade, const int exec_grade);
 		const std::string	getName() const;
 		bool 				getSigned() const;
 		int					getSignGrade() const;
@@ -43,6 +42,6 @@ class Form {
 		virtual void		execute(Bureaucrat const& executor) const = 0;
 };
 
-std::ostream&	operator<<(std::ostream& os, const Form& f);
+std::ostream&	operator<<(std::ostream& os, const AForm& f);
 
-#endif  // FORM_HPP
+#endif  // AFORM_HPP
