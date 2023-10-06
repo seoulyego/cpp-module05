@@ -1,5 +1,4 @@
 #include "PresidentialPardonForm.hpp"
-#include "Bureaucrat.hpp"
 #include <iostream>
 
 PresidentialPardonForm::PresidentialPardonForm()
@@ -24,5 +23,12 @@ const std::string	PresidentialPardonForm::getTarget() const {
 }
 
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const {
+	if (executor.getGrade() > this->getExecGrade()) {
+		throw GradeTooLowException();
+	}
+	else if (this->getSigned() == false) {
+		throw NotSignedException();
+	}
+
 	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }

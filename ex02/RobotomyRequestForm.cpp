@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include "Bureaucrat.hpp"
 #include <iostream>
 
 RobotomyRequestForm::RobotomyRequestForm()
@@ -24,11 +23,20 @@ const std::string	RobotomyRequestForm::getTarget() const {
 }
 
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
+	if (executor.getGrade() > this->getExecGrade()) {
+		throw GradeTooLowException();
+	}
+	else if (this->getSigned() == false) {
+		throw NotSignedException();
+	}
+
 	int	tmp = rand() % 2;
 
 	std::cout << "Start robotomize, Rizzzzzzzzzzz!!!!" << std::endl;
-	if (tmp)
+	if (tmp) {
 		std::cout << this->getTarget() << " has become a robot!" << std::endl;
-	else
+	}
+	else {
 		std::cout << "Sorry... " << this->getTarget() << " failed to robotomize..." << std::endl;
+	}
 }

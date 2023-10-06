@@ -1,10 +1,9 @@
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
+# include "Bureaucrat.hpp"
 # include <string>
 # include <stdbool.h>
-
-class Bureaucrat;
 
 class AForm {
 	private:
@@ -38,7 +37,7 @@ class AForm {
 		int					getSignGrade() const;
 		int					getExecGrade() const;
 		void				setSigned(bool is_signed);
-		bool				beSigned(Bureaucrat& b);
+		void				beSigned(Bureaucrat& b);
 		virtual void		execute(Bureaucrat const& executor) const = 0;
 };
 

@@ -1,5 +1,4 @@
 #include "ShrubberyCreationForm.hpp"
-#include "Bureaucrat.hpp"
 #include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm()
@@ -24,6 +23,13 @@ const std::string	ShrubberyCreationForm::getTarget() const {
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+	if (executor.getGrade() > this->getExecGrade()) {
+		throw GradeTooLowException();
+	}
+	else if (this->getSigned() == false) {
+		throw NotSignedException();
+	}
+
 	std::string		filename;
 	std::ofstream	outfile;
 

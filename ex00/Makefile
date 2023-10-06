@@ -36,12 +36,13 @@ $(OBJ_FOLDER)	:
 
 $(NAME)	:	$(OBJS)
 	@$(CC) $(CXXFLAGS) $(DBFLAGS) -o $@ $^
-	@(printf [ && find . -name "*.part.json" | xargs cat && printf ]) > $(JSON_FILES);
 	@echo "\033[01;32m         SUCCESS!        \033[0m"
+#	@(printf [ && find . -name "*.part.json" | xargs cat && printf ]) > $(JSON_FILES);
 
 
 $(OBJ_FOLDER)%.o	:	%.cpp
-	@$(CC) $(CXXFLAGS) $(DBFLAGS) $(MJFLAGS) -c -o $@ $<
+	@$(CC) $(CXXFLAGS) $(DBFLAGS) -c -o $@ $<
+#	@$(CC) $(CXXFLAGS) $(DBFLAGS) $(MJFLAGS) -c -o $@ $<
 
 .PHONY	:	debug
 debug	:
