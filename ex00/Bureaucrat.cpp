@@ -11,11 +11,12 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 
 Bureaucrat::Bureaucrat() : name("defualt"), grade(150) {}
 
-Bureaucrat::Bureaucrat(Bureaucrat &object) : name(object.getName()), grade(object.getGrade()) {}
+Bureaucrat::Bureaucrat(const Bureaucrat& object) : name(object.getName()), grade(object.getGrade()) {}
 
 Bureaucrat&	Bureaucrat::operator=(const Bureaucrat& object) {
-	if (this == &object)
+	if (this == &object) {
 		return *this;
+	}
 	this->grade = object.getGrade();
 	return *this;
 }
@@ -40,8 +41,9 @@ int	Bureaucrat::getGrade() const {
 }
 
 void	Bureaucrat::increaseGrade() {
-	if (this->grade == 1)
+	if (this->grade == 1) {
 		std::cout << "Grade is already highest. Grade: " << std::endl;
+	}
 	else {
 		--this->grade;
 		std::cout << "Grade is increased. Grade: " << this->grade << std::endl;
@@ -49,8 +51,9 @@ void	Bureaucrat::increaseGrade() {
 }
 
 void	Bureaucrat::decreaseGrade() {
-	if (this->grade == 150)
+	if (this->grade == 150) {
 		std::cout << "Grade is already lowest. Grade: " << this->grade << std::endl;
+	}
 	else {
 		++this->grade;
 		std::cout << "Grade is decreased. Grade: " << this->grade << std::endl;

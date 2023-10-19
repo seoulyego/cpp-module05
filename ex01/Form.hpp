@@ -24,7 +24,7 @@ class Form {
 		};
 
 		Form();
-		Form(Form& object);
+		Form(const Form& object);
 		Form& operator=(const Form& object);
 		~Form();
 
@@ -34,7 +34,7 @@ class Form {
 		int					getSignGrade() const;
 		int					getExecGrade() const;
 		void				setSigned(bool is_signed);
-		bool				beSigned(Bureaucrat& b);
+		bool				beSigned(const Bureaucrat& b);
 };
 
 std::ostream&	operator<<(std::ostream& os, const Form& f);

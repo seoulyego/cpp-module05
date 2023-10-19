@@ -22,7 +22,7 @@ class Bureaucrat {
 		};
 
 		Bureaucrat();
-		Bureaucrat(Bureaucrat& object);
+		Bureaucrat(const Bureaucrat& object);
 		Bureaucrat&	operator=(const Bureaucrat& object);
 		~Bureaucrat();
 

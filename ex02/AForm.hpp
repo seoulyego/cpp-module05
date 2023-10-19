@@ -27,7 +27,7 @@ class AForm {
 		};
 
 		AForm();
-		AForm(AForm& object);
+		AForm(const AForm& object);
 		AForm& operator=(const AForm& object);
 		virtual ~AForm();
 
@@ -38,7 +38,7 @@ class AForm {
 		int					getExecGrade() const;
 		void				setSigned(bool is_signed);
 		void				beSigned(Bureaucrat& b);
-		virtual void		execute(Bureaucrat const& executor) const = 0;
+		virtual void		execute(const Bureaucrat& executor) const = 0;
 };
 
 std::ostream&	operator<<(std::ostream& os, const AForm& f);

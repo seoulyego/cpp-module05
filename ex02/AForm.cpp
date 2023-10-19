@@ -17,7 +17,7 @@ const char	*AForm::NotSignedException::what() const throw() {
 AForm::AForm()
 : name("defualt"), is_signed(false), sign_grade(150), exec_grade(150) {}
 
-AForm::AForm(AForm &object)
+AForm::AForm(const AForm& object)
 : name(object.getName()), is_signed(object.getSigned()), sign_grade(object.getSignGrade()), exec_grade(object.getExecGrade()) {}
 
 AForm&	AForm::operator=(const AForm& object) {
@@ -57,14 +57,15 @@ void	AForm::setSigned(bool is_signed) {
 }
 
 void	AForm::beSigned(Bureaucrat& b) {
-	if (this->getSignGrade() < b.getGrade())
+	if (this->getSignGrade() < b.getGrade()) {
 		throw AForm::GradeTooLowException();
+	}
 	else if (this->getSigned() == true) {
 		std::cout << this->getName() << " is already signed." << std::endl;
 	}
 	else {
 		this->setSigned(true);
-		std::cout << b.getName() << " signed " << this->getName() << "." << std::endl;
+		std::cout << b.getName() << " signed " << this->getName() << std::endl;
 	}
 }
 

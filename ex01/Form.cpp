@@ -13,12 +13,13 @@ const char	*Form::GradeTooLowException::what() const throw() {
 Form::Form()
 : name("defualt"), is_signed(false), sign_grade(150), exec_grade(150) {}
 
-Form::Form(Form &object)
+Form::Form(const Form& object)
 : name(object.getName()), is_signed(object.getSigned()), sign_grade(object.getSignGrade()), exec_grade(object.getExecGrade()) {}
 
 Form&	Form::operator=(const Form& object) {
-	if (this == &object)
+	if (this == &object) {
 		return *this;
+	}
 	return *this;
 }
 
@@ -26,10 +27,12 @@ Form::~Form() {}
 
 Form::Form(const std::string name, const int sign_grade, const int exec_grade)
 : name(name), is_signed(false), sign_grade(sign_grade), exec_grade(exec_grade) {
-	if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
+	if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
 		throw Form::GradeTooHighException();
-	else if (this->getSignGrade() > 150 || this->getExecGrade() > 150)
+	}
+	else if (this->getSignGrade() > 150 || this->getExecGrade() > 150) {
 		throw Form::GradeTooLowException();
+	}
 }
 
 const std::string	Form::getName() const {
@@ -52,9 +55,10 @@ void	Form::setSigned(bool is_signed) {
 	this->is_signed = is_signed;
 }
 
-bool	Form::beSigned(Bureaucrat& b) {
-	if (this->getSignGrade() < b.getGrade())
+bool	Form::beSigned(const Bureaucrat& b) {
+	if (this->getSignGrade() < b.getGrade()) {
 		throw Form::GradeTooLowException();
+	}
 	else if (this->getSigned() == true) {
 		std::cout << this->getName() << " is already signed." << std::endl;
 		return false;

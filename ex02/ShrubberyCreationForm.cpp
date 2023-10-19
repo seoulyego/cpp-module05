@@ -4,14 +4,15 @@
 ShrubberyCreationForm::ShrubberyCreationForm()
 : AForm("ShrubberyCreationForm", 145, 137), target("default") {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm& object)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& object)
 : AForm("ShrubberyCreationForm", 145, 137), target(object.getTarget()) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& object) {
-	if (this == &object)
+	if (this == &object) {
 		return *this;
+	}
 	return *this;
 }
 
@@ -22,7 +23,7 @@ const std::string	ShrubberyCreationForm::getTarget() const {
 	return this->target;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const {
+void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() > this->getExecGrade()) {
 		throw GradeTooLowException();
 	}

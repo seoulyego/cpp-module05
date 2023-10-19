@@ -4,14 +4,15 @@
 RobotomyRequestForm::RobotomyRequestForm()
 : AForm("RobotomyRequestForm", 72, 45), target("default") {}
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm& object)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& object)
 : AForm("RobotomyRequestForm", 72, 45), target(object.getTarget()) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& object) {
-	if (this == &object)
+	if (this == &object) {
 		return *this;
+	}
 	return *this;
 }
 
@@ -22,7 +23,7 @@ const std::string	RobotomyRequestForm::getTarget() const {
 	return this->target;
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const& executor) const {
+void	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() > this->getExecGrade()) {
 		throw GradeTooLowException();
 	}

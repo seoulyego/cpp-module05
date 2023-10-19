@@ -22,7 +22,7 @@ class Bureaucrat {
 		};
 
 		Bureaucrat();
-		Bureaucrat(Bureaucrat& object);
+		Bureaucrat(const Bureaucrat& object);
 		Bureaucrat&	operator=(const Bureaucrat& object);
 		~Bureaucrat();
 
@@ -32,7 +32,7 @@ class Bureaucrat {
 		void				increaseGrade();
 		void				decreaseGrade();
 		void				signForm(AForm& form);
-		void				executeForm(AForm const& form);
+		void				executeForm(const AForm& form);
 };
 
 std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b);
