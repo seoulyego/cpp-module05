@@ -55,17 +55,16 @@ void	Form::setSigned(bool is_signed) {
 	this->is_signed = is_signed;
 }
 
-bool	Form::beSigned(const Bureaucrat& b) {
+void	Form::beSigned(const Bureaucrat& b) {
 	if (this->getSignGrade() < b.getGrade()) {
 		throw Form::GradeTooLowException();
 	}
 	else if (this->getSigned() == true) {
 		std::cout << this->getName() << " is already signed." << std::endl;
-		return false;
 	}
 	else {
 		this->setSigned(true);
-		return true;
+		std::cout << b.getName() << " signed " << this->getName() << std::endl;
 	}
 }
 

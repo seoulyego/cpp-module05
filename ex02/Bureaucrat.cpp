@@ -42,7 +42,7 @@ int	Bureaucrat::getGrade() const {
 
 void	Bureaucrat::increaseGrade() {
 	if (this->grade == 1) {
-		std::cout << "Grade is already highest. Grade: " << std::endl;
+		std::cout << "Grade is already highest. Grade: " << this->grade << std::endl;
 	}
 	else {
 		--this->grade;
@@ -63,8 +63,7 @@ void	Bureaucrat::decreaseGrade() {
 void	Bureaucrat::signForm(AForm& form) {
 	try {
 		form.beSigned(*this);
-	}
-	catch (std::exception& e) {
+	} catch (std::exception& e) {
 		std::cerr << this->getName() << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 }
