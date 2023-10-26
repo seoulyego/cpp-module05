@@ -1,29 +1,19 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm()
-: AForm("ShrubberyCreationForm", 145, 137), target("default") {}
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target)
+: AForm("ShrubberyCreationForm", 145, 137), target(target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& object)
 : AForm("ShrubberyCreationForm", 145, 137), target(object.getTarget()) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
-ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& object) {
-	if (this == &object) {
-		return *this;
-	}
-	return *this;
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target)
-: AForm("ShrubberyCreationForm", 145, 137), target(target) {}
-
-const std::string	ShrubberyCreationForm::getTarget() const {
+const std::string& ShrubberyCreationForm::getTarget() const {
 	return this->target;
 }
 
-void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() > this->getExecGrade()) {
 		throw GradeTooLowException();
 	}
@@ -31,8 +21,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 		throw NotSignedException();
 	}
 
-	std::string		filename;
-	std::ofstream	outfile;
+	std::string filename;
+	std::ofstream outfile;
 
 	filename = this->getTarget() + "_shrubbery";
 	outfile.open(filename.c_str());

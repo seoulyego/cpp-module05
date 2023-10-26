@@ -1,17 +1,16 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-void	i_wanna_go_home(void) {
+void i_wanna_go_home(void) {
 	system("leaks $PPID");
 }
 
-int	main(void) {
+int main(void) {
 	try {
 		try {
-			Bureaucrat test("test", 200);	
-		}
-		catch(const std::exception& e) {
-			std::cerr << e.what() << std::endl;
+			Bureaucrat test("test", 200);
+		} catch (const std::exception& e) {
+			std::cout << e.what() << std::endl;
 			std::cout << std::endl;
 		}
 
@@ -34,9 +33,8 @@ int	main(void) {
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << std::endl;
-	}
-	catch(const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
 	return 0;
 }

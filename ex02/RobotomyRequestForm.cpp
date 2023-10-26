@@ -1,29 +1,20 @@
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 #include <iostream>
 
-RobotomyRequestForm::RobotomyRequestForm()
-: AForm("RobotomyRequestForm", 72, 45), target("default") {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target)
+: AForm("RobotomyRequestForm", 72, 45), target(target) {}
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& object)
 : AForm("RobotomyRequestForm", 72, 45), target(object.getTarget()) {}
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& object) {
-	if (this == &object) {
-		return *this;
-	}
-	return *this;
-}
-
-RobotomyRequestForm::RobotomyRequestForm(const std::string target)
-: AForm("RobotomyRequestForm", 72, 45), target(target) {}
-
-const std::string	RobotomyRequestForm::getTarget() const {
+const std::string& RobotomyRequestForm::getTarget() const {
 	return this->target;
 }
 
-void	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
+void RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 	if (executor.getGrade() > this->getExecGrade()) {
 		throw GradeTooLowException();
 	}
@@ -31,7 +22,8 @@ void	RobotomyRequestForm::execute(const Bureaucrat& executor) const {
 		throw NotSignedException();
 	}
 
-	int	tmp = rand() % 2;
+	std::srand(std::time(0));
+	int	tmp = std::rand() % 2;
 
 	std::cout << "Start robotomize, Rizzzzzzzzzzz!!!!" << std::endl;
 	if (tmp) {

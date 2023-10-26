@@ -2,15 +2,15 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-const char	*AForm::GradeTooHighException::what() const throw() {
+const char *AForm::GradeTooHighException::what() const throw() {
 	return "Grade is too high.";
 }
 
-const char	*AForm::GradeTooLowException::what() const throw() {
+const char *AForm::GradeTooLowException::what() const throw() {
 	return "Grade is too low.";
 }
 
-const char	*AForm::NotSignedException::what() const throw() {
+const char *AForm::NotSignedException::what() const throw() {
 	return "Must be signed before excute.";
 }
 
@@ -20,15 +20,9 @@ AForm::AForm()
 AForm::AForm(const AForm& object)
 : name(object.getName()), is_signed(object.getSigned()), sign_grade(object.getSignGrade()), exec_grade(object.getExecGrade()) {}
 
-AForm&	AForm::operator=(const AForm& object) {
-	if (this == &object)
-		return *this;
-	return *this;
-}
-
 AForm::~AForm() {}
 
-AForm::AForm(const std::string name, const int sign_grade, const int exec_grade)
+AForm::AForm(const std::string& name, const int sign_grade, const int exec_grade)
 : name(name), is_signed(false), sign_grade(sign_grade), exec_grade(exec_grade) {
 	if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
 		throw AForm::GradeTooHighException();
@@ -36,27 +30,27 @@ AForm::AForm(const std::string name, const int sign_grade, const int exec_grade)
 		throw AForm::GradeTooLowException();
 }
 
-const std::string	AForm::getName() const {
+const std::string& AForm::getName() const {
 	return this->name;
 }
 
-bool	AForm::getSigned() const {
+bool AForm::getSigned() const {
 	return this->is_signed;
 }
 
-int	AForm::getSignGrade() const {
+int AForm::getSignGrade() const {
 	return this->sign_grade;
 }
 
-int	AForm::getExecGrade() const {
+int AForm::getExecGrade() const {
 	return this->exec_grade;
 }
 
-void	AForm::setSigned(bool is_signed) {
+void AForm::setSigned(bool is_signed) {
 	this->is_signed = is_signed;
 }
 
-void	AForm::beSigned(Bureaucrat& b) {
+void AForm::beSigned(Bureaucrat& b) {
 	if (this->getSignGrade() < b.getGrade()) {
 		throw AForm::GradeTooLowException();
 	}
@@ -69,7 +63,7 @@ void	AForm::beSigned(Bureaucrat& b) {
 	}
 }
 
-std::ostream&	operator<<(std::ostream& os, const AForm& f) {
+std::ostream& operator<<(std::ostream& os, const AForm& f) {
 	os << std::boolalpha << f.getName()
 	<< ", signed: " << f.getSigned()
 	<< ", sign_grade: " << f.getSignGrade()

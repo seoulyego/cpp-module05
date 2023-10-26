@@ -2,21 +2,20 @@
 #include "Form.hpp"
 #include <iostream>
 
-void	i_wanna_go_home(void) {
+void i_wanna_go_home(void) {
 	system("leaks $PPID");
 }
 
-int	main(void) {
+int main(void) {
 	try {
-		Form test_1_0("test_1_0", 1, 0);	
-		Form test_200_150("test_200_150", 200, 150);	
-	}
-	catch(const std::exception& e) {
-		std::cerr << e.what() << std::endl;
+		Form test_1_0("test_1_0", 1, 0);
+		Form test_200_150("test_200_150", 200, 150);
+	} catch (const std::exception& e) {
+		std::cout << e.what() << std::endl;
 	}
 
-	Form form_1("form_1", 1, 1);	
-	Form form_150("form_150", 150, 150);	
+	Form form_1("form_1", 1, 1);
+	Form form_150("form_150", 150, 150);
 
 	std::cout << std::endl << "====== form ======" << std::endl;
 	std::cout << form_1 << std::endl;
