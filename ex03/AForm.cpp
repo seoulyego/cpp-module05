@@ -7,8 +7,8 @@ const char *AForm::GradeTooLowException::what() const throw() { return "Grade is
 
 const char *AForm::NotSignedException::what() const throw() { return "Must be signed before excute."; }
 
-AForm::AForm(const std::string& name, const std::string& target, const int sign_grade, const int exec_grade)
-: _name(name), _target(target), _isSigned(false), _signGrade(sign_grade), _execGrade(exec_grade) {
+AForm::AForm(const std::string& name, const std::string& target, const int signGrade, const int execGrade)
+: _name(name), _target(target), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade) {
 	if (getSignGrade() < 1 || getExecGrade() < 1) {
 		throw GradeTooHighException();
 	}

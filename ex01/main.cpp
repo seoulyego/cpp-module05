@@ -10,7 +10,7 @@ int main(void) {
 	try {
 		Form test_1_0("test_1_0", 1, 0);
 		Form test_200_150("test_200_150", 200, 150);
-	} catch (const std::exception& e) {
+	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 

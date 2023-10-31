@@ -25,8 +25,8 @@ class Bureaucrat {
 		void				decreaseGrade();
 
 		private:
-			const std::string	name;
-			int					grade;
+			const std::string	_name;
+			int					_grade;
 
 			Bureaucrat();
 			Bureaucrat&	operator=(const Bureaucrat& object);

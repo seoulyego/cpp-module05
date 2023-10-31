@@ -1,16 +1,12 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-const char *Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade is too high.";
-}
+const char *Bureaucrat::GradeTooHighException::what() const throw() { return "Grade is too high."; }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade is too low.";
-}
+const char *Bureaucrat::GradeTooLowException::what() const throw() { return "Grade is too low."; }
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade)
-: name(name), grade(grade) {
+: _name(name), _grade(grade) {
 	if (grade < 1) {
 		throw Bureaucrat::GradeTooHighException();
 	}
@@ -20,35 +16,31 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade)
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& object)
-: name(object.getName()), grade(object.getGrade()) {}
+: _name(object.getName()), _grade(object.getGrade()) {}
 
 Bureaucrat::~Bureaucrat() {}
 
-const std::string& Bureaucrat::getName() const {
-	return this->name;
-}
+const std::string& Bureaucrat::getName() const { return _name; }
 
-int Bureaucrat::getGrade() const {
-	return this->grade;
-}
+int Bureaucrat::getGrade() const { return _grade; }
 
 void Bureaucrat::increaseGrade() {
-	if (this->grade == 1) {
+	if (_grade == 1) {
 		throw GradeTooHighException();
 	}
 	else {
-		--this->grade;
-		std::cout << "Grade is increased. Grade: " << this->grade << std::endl;
+		--_grade;
+		std::cout << "Grade is increased. Grade: " << _grade << std::endl;
 	}
 }
 
 void Bureaucrat::decreaseGrade() {
-	if (this->grade == 150) {
+	if (_grade == 150) {
 		throw GradeTooLowException();
 	}
 	else {
-		++this->grade;
-		std::cout << "Grade is decreased. Grade: " << this->grade << std::endl;
+		++_grade;
+		std::cout << "Grade is decreased. Grade: " << _grade << std::endl;
 	}
 }
 

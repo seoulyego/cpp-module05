@@ -2,59 +2,43 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 
-const char *Form::GradeTooHighException::what() const throw() {
-	return "Grade is too high.";
-}
+const char *Form::GradeTooHighException::what() const throw() { return "Grade is too high."; }
 
-const char *Form::GradeTooLowException::what() const throw() {
-	return "Grade is too low.";
-}
+const char *Form::GradeTooLowException::what() const throw() { return "Grade is too low."; }
 
 Form::Form(const std::string& name, const int sign_grade, const int exec_grade)
-: name(name), is_signed(false), sign_grade(sign_grade), exec_grade(exec_grade) {
-	if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {
+: _name(name), _isSigned(false), _signGrade(sign_grade), _execGrade(exec_grade) {
+	if (getSignGrade() < 1 || getExecGrade() < 1) {
 		throw Form::GradeTooHighException();
 	}
-	else if (this->getSignGrade() > 150 || this->getExecGrade() > 150) {
+	else if (getSignGrade() > 150 || getExecGrade() > 150) {
 		throw Form::GradeTooLowException();
 	}
 }
 
 Form::Form(const Form& object)
-: name(object.getName()), is_signed(object.getSigned()), sign_grade(object.getSignGrade()), exec_grade(object.getExecGrade()) {}
+: _name(object.getName()), _isSigned(object.getSigned()), _signGrade(object.getSignGrade()), _execGrade(object.getExecGrade()) {}
 
 Form::~Form() {}
 
-const std::string& Form::getName() const {
-	return this->name;
-}
+const std::string& Form::getName() const { return _name; }
 
-bool Form::getSigned() const {
-	return this->is_signed;
-}
+bool Form::getSigned() const { return _isSigned; }
 
-int Form::getSignGrade() const {
-	return this->sign_grade;
-}
+int Form::getSignGrade() const { return _signGrade; }
 
-int Form::getExecGrade() const {
-	return this->exec_grade;
-}
-
-void Form::setSigned(bool is_signed) {
-	this->is_signed = is_signed;
-}
+int Form::getExecGrade() const { return _execGrade; }
 
 void Form::beSigned(const Bureaucrat& b) {
-	if (this->getSignGrade() < b.getGrade()) {
-		throw Form::GradeTooLowException();
+	if (getSignGrade() < b.getGrade()) {
+		throw GradeTooLowException();
 	}
-	else if (this->getSigned() == true) {
-		std::cout << this->getName() << " is already signed." << std::endl;
+	else if (getSigned() == true) {
+		std::cout << getName() << " is already signed." << std::endl;
 	}
 	else {
-		this->setSigned(true);
-		std::cout << b.getName() << " signed " << this->getName() << std::endl;
+		_isSigned = true;
+		std::cout << b.getName() << " signed " << getName() << std::endl;
 	}
 }
 

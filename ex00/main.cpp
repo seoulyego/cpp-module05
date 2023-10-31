@@ -9,7 +9,7 @@ int main(void) {
 	try {
 		try {
 			Bureaucrat test("test", 200);
-		} catch (const std::exception& e) {
+		} catch (std::exception& e) {
 			std::cout << e.what() << std::endl;
 			std::cout << std::endl;
 		}
@@ -33,7 +33,7 @@ int main(void) {
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << std::endl;
-	} catch (const std::exception& e) {
+	} catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 	return 0;

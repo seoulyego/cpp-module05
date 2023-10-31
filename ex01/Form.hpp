@@ -25,14 +25,13 @@ class Form {
 		bool				getSigned() const;
 		int					getSignGrade() const;
 		int					getExecGrade() const;
-		void				setSigned(bool is_signed);
 		void				beSigned(const Bureaucrat& b);
 
 		private:
-			const std::string	name;
-			bool				is_signed;
-			const int			sign_grade;
-			const int			exec_grade;
+			const std::string	_name;
+			bool				_isSigned;
+			const int			_signGrade;
+			const int			_execGrade;
 
 			Form();
 			Form&	operator=(const Form& object);
