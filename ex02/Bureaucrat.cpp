@@ -9,14 +9,6 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade is too low.";
 }
 
-Bureaucrat::Bureaucrat()
-: name("defualt"), grade(150) {}
-
-Bureaucrat::Bureaucrat(const Bureaucrat& object)
-: name(object.getName()), grade(object.getGrade()) {}
-
-Bureaucrat::~Bureaucrat() {}
-
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(grade) {
 	if (grade < 1) {
 		throw GradeTooHighException();
@@ -25,6 +17,11 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name), grade(g
 		throw GradeTooLowException();
 	}
 }
+
+Bureaucrat::Bureaucrat(const Bureaucrat& object)
+: name(object.getName()), grade(object.getGrade()) {}
+
+Bureaucrat::~Bureaucrat() {}
 
 const std::string& Bureaucrat::getName() const {
 	return this->name;

@@ -3,7 +3,6 @@
 
 # include "Bureaucrat.hpp"
 # include <string>
-# include <stdbool.h>
 
 class AForm {
 	public:
@@ -22,28 +21,28 @@ class AForm {
 				const char *what() const throw();
 		};
 
-		AForm();
 		AForm(const std::string& name, const int sign_grade, const int exec_grade);
 		AForm(const AForm& object);
 		virtual ~AForm();
 
-		const std::string& getName() const;
-		bool getSigned() const;
-		int getSignGrade() const;
-		int getExecGrade() const;
-		void setSigned(bool is_signed);
-		void beSigned(Bureaucrat& b);
-		virtual void execute(const Bureaucrat& executor) const = 0;
+		const std::string&	getName() const;
+		bool				getSigned() const;
+		int					getSignGrade() const;
+		int					getExecGrade() const;
+		void				setSigned(bool is_signed);
+		void				beSigned(Bureaucrat& b);
+		virtual void		execute(const Bureaucrat& executor) const = 0;
 
 		private:
-			const std::string name;
-			bool is_signed;
-			const int sign_grade;
-			const int exec_grade;
+			const std::string	name;
+			bool				is_signed;
+			const int			sign_grade;
+			const int			exec_grade;
 
-			AForm& operator=(const AForm& object);
+			AForm();
+			AForm&	operator=(const AForm& object);
 };
 
-std::ostream& operator<<(std::ostream& os, const AForm& f);
+std::ostream&	operator<<(std::ostream& os, const AForm& f);
 
 #endif  // AFORM_HPP

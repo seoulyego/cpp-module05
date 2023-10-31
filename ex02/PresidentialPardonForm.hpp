@@ -9,14 +9,14 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm& object);
 		~PresidentialPardonForm();
 
-		const std::string& getTarget() const;
-		void execute(const Bureaucrat& executor) const;
+		const std::string&	getTarget() const;
+		void				execute(const Bureaucrat& executor) const;
 
 	private:
-		const std::string target;
+		const std::string	target;
 
 		PresidentialPardonForm();
-		PresidentialPardonForm& operator=(const PresidentialPardonForm& object);
+		PresidentialPardonForm&	operator=(const PresidentialPardonForm& object);
 };
 
 #endif  // PRESIDENTIALPARDONFORM_HPP

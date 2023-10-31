@@ -9,14 +9,14 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm(const RobotomyRequestForm& object);
 		~RobotomyRequestForm();
 
-		const std::string& getTarget() const;
-		void execute(const Bureaucrat& executor) const;
+		const std::string&	getTarget() const;
+		void				execute(const Bureaucrat& executor) const;
 
 	private:
 		const std::string target;
 
 		RobotomyRequestForm();
-		RobotomyRequestForm& operator=(const RobotomyRequestForm& object);
+		RobotomyRequestForm&	operator=(const RobotomyRequestForm& object);
 };
 
 #endif  // ROBOTOMYREQUESTFORM_HPP

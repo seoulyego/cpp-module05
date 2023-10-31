@@ -9,14 +9,14 @@ class ShrubberyCreationForm : public AForm {
 		~ShrubberyCreationForm();
 
 		ShrubberyCreationForm(const std::string& target);
-		const std::string& getTarget() const;
-		void execute(const Bureaucrat& executor) const;
+		const std::string&	getTarget() const;
+		void				execute(const Bureaucrat& executor) const;
 
 	private:
-		const std::string target;
+		const std::string	target;
 
 		ShrubberyCreationForm();
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& object);
+		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& object);
 };
 
 #endif  // SHRUBBERYCREATIONFORM_HPP

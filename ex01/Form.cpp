@@ -10,9 +10,6 @@ const char *Form::GradeTooLowException::what() const throw() {
 	return "Grade is too low.";
 }
 
-Form::Form()
-: name("defualt"), is_signed(false), sign_grade(150), exec_grade(150) {}
-
 Form::Form(const std::string& name, const int sign_grade, const int exec_grade)
 : name(name), is_signed(false), sign_grade(sign_grade), exec_grade(exec_grade) {
 	if (this->getSignGrade() < 1 || this->getExecGrade() < 1) {

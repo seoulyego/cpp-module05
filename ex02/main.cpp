@@ -1,7 +1,6 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include <exception>
 #include <iostream>
 
 void i_wanna_go_home(void) {

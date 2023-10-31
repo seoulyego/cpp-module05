@@ -1,7 +1,6 @@
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
-# include <exception>
 # include <string>
 
 class AForm;
@@ -18,25 +17,25 @@ class Bureaucrat {
 				const char *what() const throw();
 		};
 
-		Bureaucrat();
 		Bureaucrat(const std::string& name, int grade);
 		Bureaucrat(const Bureaucrat& object);
 		~Bureaucrat();
 
-		const std::string& getName() const;
-		int getGrade() const;
-		void increaseGrade();
-		void decreaseGrade();
-		void signForm(AForm& form);
-		void executeForm(const AForm& form);
+		const std::string&	getName() const;
+		int					getGrade() const;
+		void				increaseGrade();
+		void				decreaseGrade();
+		void				signForm(AForm& form);
+		void				executeForm(const AForm& form);
 
 		private:
-			const std::string name;
-			int grade;
+			const std::string	name;
+			int					grade;
 
+			Bureaucrat();
 			Bureaucrat&	operator=(const Bureaucrat& object);
 };
 
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
+std::ostream&	operator<<(std::ostream& os, const Bureaucrat& b);
 
 #endif  // BUREAUCRAT_HPP

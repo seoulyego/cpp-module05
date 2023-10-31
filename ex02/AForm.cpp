@@ -1,5 +1,4 @@
 #include "AForm.hpp"
-#include "Bureaucrat.hpp"
 #include <iostream>
 
 const char *AForm::GradeTooHighException::what() const throw() {
@@ -14,14 +13,6 @@ const char *AForm::NotSignedException::what() const throw() {
 	return "Must be signed before excute.";
 }
 
-AForm::AForm()
-: name("defualt"), is_signed(false), sign_grade(150), exec_grade(150) {}
-
-AForm::AForm(const AForm& object)
-: name(object.getName()), is_signed(object.getSigned()), sign_grade(object.getSignGrade()), exec_grade(object.getExecGrade()) {}
-
-AForm::~AForm() {}
-
 AForm::AForm(const std::string& name, const int sign_grade, const int exec_grade)
 : name(name), is_signed(false), sign_grade(sign_grade), exec_grade(exec_grade) {
 	if (this->getSignGrade() < 1 || this->getExecGrade() < 1)
@@ -29,6 +20,11 @@ AForm::AForm(const std::string& name, const int sign_grade, const int exec_grade
 	else if (this->getSignGrade() > 150 || this->getExecGrade() > 150)
 		throw AForm::GradeTooLowException();
 }
+
+AForm::AForm(const AForm& object)
+: name(object.getName()), is_signed(object.getSigned()), sign_grade(object.getSignGrade()), exec_grade(object.getExecGrade()) {}
+
+AForm::~AForm() {}
 
 const std::string& AForm::getName() const {
 	return this->name;

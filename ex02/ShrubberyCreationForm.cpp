@@ -26,6 +26,9 @@ void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
 
 	filename = this->getTarget() + "_shrubbery";
 	outfile.open(filename.c_str());
+	if (outfile.is_open() == false) {
+		throw std::ios_base::failure("Failed to open.");
+	}
 	outfile
 	<< " //\\\\\\    ||      /\\ ///\\\\\\//\\\\\\\\    /////\\\\////\\\\\\\\     || " << std::endl
 	<< " //\\\\\\           //\\\\///\\\\///\\\\\\\\\\  //////\\////\\\\\\\\\\\\       " << std::endl
