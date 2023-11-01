@@ -1,4 +1,7 @@
 #include "Intern.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 
 static AForm *makeShrubbery(const std::string& target) { return new ShrubberyCreationForm(target); }
@@ -6,10 +9,6 @@ static AForm *makeShrubbery(const std::string& target) { return new ShrubberyCre
 static AForm *makeRobotomy(const std::string& target) { return new RobotomyRequestForm(target); }
 
 static AForm *makePresidential(const std::string& target) { return new PresidentialPardonForm(target); }
-
-const char *Intern::NoFormException::what() const throw() {
-	return "Does not exist name of form.";
-}
 
 Intern::Intern() {}
 
@@ -45,3 +44,5 @@ AForm *Intern::makeForm(const std::string& name, const std::string& target) {
 	throw NoFormException();
 	return NULL;
 }
+
+const char *Intern::NoFormException::what() const throw() { return "Does not exist form."; }

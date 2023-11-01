@@ -1,22 +1,12 @@
 #ifndef FORM_HPP
 # define FORM_HPP
 
+# include "Bureaucrat.hpp"
 # include <string>
-
-class Bureaucrat;
+# include <exception>
 
 class Form {
 	public:
-		class GradeTooHighException : public std::exception {
-			public:
-				const char *what() const throw();
-		};
-
-		class GradeTooLowException : public std::exception {
-			public:
-				const char *what() const throw();
-		};
-
 		Form(const std::string& name, const int sign_grade, const int exec_grade);
 		Form(const Form& object);
 		~Form();
@@ -27,14 +17,23 @@ class Form {
 		int					getExecGrade() const;
 		void				beSigned(const Bureaucrat& b);
 
-		private:
-			const std::string	_name;
-			bool				_isSigned;
-			const int			_signGrade;
-			const int			_execGrade;
+		class GradeTooHighException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
+		class GradeTooLowException : public std::exception {
+			public:
+				const char *what() const throw();
+		};
 
-			Form();
-			Form&	operator=(const Form& object);
+	private:
+		const std::string	_name;
+		bool				_isSigned;
+		const int			_signGrade;
+		const int			_execGrade;
+
+		Form();
+		Form&	operator=(const Form& object);
 };
 
 std::ostream&	operator<<(std::ostream& os, const Form& f);

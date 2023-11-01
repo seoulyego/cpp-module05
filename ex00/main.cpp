@@ -1,9 +1,12 @@
 #include "Bureaucrat.hpp"
+#include <exception>
 #include <iostream>
 
+/*
 void i_wanna_go_home(void) {
 	system("leaks $PPID");
 }
+*/
 
 int main(void) {
 	try {
@@ -21,15 +24,17 @@ int main(void) {
 		std::cout << b << std::endl;
 		std::cout << std::endl;
 
-		// a.decreaseGrade();
-		// b.increaseGrade();
-
-		//std::cout << a << std::endl;
-		//std::cout << b << std::endl;
-		//std::cout << std::endl;
+		try {
+			a.decreaseGrade();
+			b.increaseGrade();
+		} catch (std::exception& e) {
+			std::cout << e.what() << std::endl;
+			std::cout << std::endl;
+		}
 
 		a.increaseGrade();
 		b.decreaseGrade();
+
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << std::endl;

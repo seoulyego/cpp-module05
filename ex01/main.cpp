@@ -1,10 +1,11 @@
-#include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include <iostream>
 
+/*
 void i_wanna_go_home(void) {
 	system("leaks $PPID");
 }
+*/
 
 int main(void) {
 	try {
